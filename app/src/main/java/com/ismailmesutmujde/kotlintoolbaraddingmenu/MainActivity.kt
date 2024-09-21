@@ -1,14 +1,16 @@
 package com.ismailmesutmujde.kotlintoolbaraddingmenu
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import com.ismailmesutmujde.kotlintoolbaraddingmenu.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() , SearchView.OnQueryTextListener {
 
     private lateinit var bindingMain : ActivityMainBinding
 
@@ -22,10 +24,16 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(bindingMain.toolbar)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
+
+        val item = menu.findItem(R.id.action_search)
+        val searchView = item.actionView as SearchView
+        searchView.setOnQueryTextListener(this)
+
         return true
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
@@ -57,4 +65,15 @@ class MainActivity : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
     }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        Log.e("onQueryTextChange", newText!!)
+        return true
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        Log.e("onQueryTextSubmit", query!!)
+        return true
+    }
+
 }
