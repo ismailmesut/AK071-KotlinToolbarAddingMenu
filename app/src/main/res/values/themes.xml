@@ -3,6 +3,9 @@
     <style name="Base.Theme.KotlinToolbarAddingMenu" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColor">@color/red</item>
     </style>
 
     <style name="Theme.KotlinToolbarAddingMenu" parent="Base.Theme.KotlinToolbarAddingMenu" />
